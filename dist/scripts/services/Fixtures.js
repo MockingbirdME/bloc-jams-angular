@@ -33,6 +33,13 @@
     Fixtures.getAlbum = function() {
       return albumPicasso;
     }
+    Fixtures.getCollection = function(numberOfAlbums){
+      albumXTimes = [];
+      for (var i=0; i<numberOfAlbums; i++) {
+        albumXTimes.push(albumPicasso);
+      }
+      return albumXTimes;
+    }
     return Fixtures;
   }
   angular
