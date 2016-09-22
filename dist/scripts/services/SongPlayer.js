@@ -77,7 +77,7 @@
       } else {
         var song = currentAlbum.songs[currentSongIndex];
         setSong(song);
-        playSong(song);
+        playSong();
       }
     }
 
@@ -89,7 +89,7 @@
       }
       var song = currentAlbum.songs[currentSongIndex];
       setSong(song);
-      playSong(song);
+      playSong();
     }
 
     return SongPlayer;
