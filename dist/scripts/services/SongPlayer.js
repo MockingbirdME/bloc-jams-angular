@@ -38,7 +38,7 @@
             SongPlayer.currentTime = currentBuzzObject.getTime();
             if (SongPlayer.currentTime >= SongPlayer.currentSong.duration) {
               SongPlayer.next();
-            } 
+            }
           });
         });
       }
@@ -63,6 +63,7 @@
     SongPlayer.currentSong = null;
     SongPlayer.currentTime = null;
     SongPlayer.volume = 50;
+    SongPlayer.muted = false;
 
     SongPlayer.play = function(song) {
       song = song || SongPlayer.currentSong;
@@ -117,6 +118,13 @@
         currentBuzzObject.setVolume(volume);
       }
     };
+
+    SongPlayer.muteToggle = function() {
+      if (currentBuzzObject) {
+        currentBuzzObject.toggleMute();
+        (SongPlayer.muted) ? SongPlayer.muted = false : SongPlayer.muted = true;
+      }
+    }
 
     SongPlayer.registerScope = function(scope) {
       controllerScope = scope;
