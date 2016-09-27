@@ -36,6 +36,9 @@
         currentBuzzObject.bind('timeupdate', function() {
           controllerScope.$apply(function() {
             SongPlayer.currentTime = currentBuzzObject.getTime();
+            if (SongPlayer.currentTime >= SongPlayer.currentSong.duration) {
+              SongPlayer.next();
+            } 
           });
         });
       }
