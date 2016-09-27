@@ -122,7 +122,11 @@
     SongPlayer.muteToggle = function() {
       if (currentBuzzObject) {
         currentBuzzObject.toggleMute();
-        (SongPlayer.muted) ? SongPlayer.muted = false : SongPlayer.muted = true;
+        if (SongPlayer.muted) {
+          SongPlayer.muted = false;
+        } else {
+          SongPlayer.muted = true;
+        }
       }
     }
 
