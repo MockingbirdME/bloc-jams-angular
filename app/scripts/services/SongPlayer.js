@@ -1,5 +1,5 @@
 (function() {
-  function SongPlayer(Fixtures) {
+  function SongPlayer(Fixtures, Metric) {
     var SongPlayer = {};
 
     var currentAlbum = Fixtures.getAlbum();
@@ -44,6 +44,9 @@
       }
 
       SongPlayer.currentSong = song;
+      Metric.registerSongPlay(song);
+console.log(Metric.listSongsPlayed());
+
 
     };
 
@@ -139,5 +142,5 @@
 
   angular
     .module('blocJams')
-    .factory('SongPlayer', ['Fixtures', SongPlayer]);
+    .factory('SongPlayer', ['Fixtures', 'Metric', SongPlayer]);
 })();
