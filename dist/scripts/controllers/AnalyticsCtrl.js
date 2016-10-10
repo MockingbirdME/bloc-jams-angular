@@ -1,5 +1,5 @@
 (function () {
-  function AnalyticsCtrl() {
+  function AnalyticsCtrl(Metric) {
     this.options = {
       chart: {
         type: 'pieChart',
@@ -8,51 +8,30 @@
         y: function(d){return d.y;},
         showLables: true,
         duration: 500,
-        lableThreshold: 0.01,
+        lableThreshold: 1,
         labelSunbeamLayout: true,
-        legend: {
-          margin: {
-            top: 5,
-            right: 35,
-            bottom: 5,
-            left: 0
-          }
-        }
+        showLegend: false,
       }
     };
-    this.data = [
-      {
-          key: "One",
-          y: 5
-      },
-      {
-          key: "Two",
-          y: 2
-      },
-      {
-          key: "Three",
-          y: 9
-      },
-      {
-          key: "Four",
-          y: 7
-      },
-      {
-          key: "Five",
-          y: 4
-      },
-      {
-          key: "Six",
-          y: 3
-      },
-      {
-          key: "Seven",
-          y: .5
-      }
-    ];
+
+    var songPlayedFromMetrics = Metric.listSongsPlayed();
+//    var songPlayedFromMetrics = ["blue", "blue", "green", "red", "blue"];
+    var songPlayedData = {};
+    for (var i=0;i < songPlayedFromMetrics.length; i++) {
+      var songName = songPlayedFromMetrics[i];
+      songPlayedData[songName] = songPlayedData[songName] ? songPlayedData[songName]+1 : 1;
+    }
+    var songPlayedDataForChart = [];
+    for(var key in songPlayedData){
+      var dataPoint = {key: 0, y: 0};
+      dataPoint["key"] = key;
+      dataPoint["y"] = songPlayedData[key];
+      songPlayedDataForChart.push(dataPoint);
+    }
+    this.data = songPlayedDataForChart;
   }
 
   angular
     .module('blocJams')
-    .controller('AnalyticsCtrl', [AnalyticsCtrl]);
+    .controller('AnalyticsCtrl', ['Metric', AnalyticsCtrl]);
 })();
