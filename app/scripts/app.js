@@ -20,9 +20,14 @@
         url: '/collection',
         controller: 'CollectionCtrl as collection',
         templateUrl: '/templates/collection.html'
+      })
+      .state('analytics', {
+        url: '/analytics',
+        controller: 'AnalyticsCtrl as analytics',
+        templateUrl: '/templates/analytics.html'
       });
   }
   angular
-    .module('blocJams', ['ui.router'])
+    .module('blocJams', ['nvd3','ui.router'])
     .config(config);
 })();
