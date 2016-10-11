@@ -46,6 +46,7 @@
       SongPlayer.currentSong = song;
       Metric.registerSongPlay(song);
 console.log(Metric.listSongsPlayed());
+console.log(Metric.listSongsPlayedByDate());
 
 
     };

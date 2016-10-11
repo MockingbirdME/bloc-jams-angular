@@ -1,6 +1,10 @@
 <section class="analytics-view container clearfix">
   <div class="chart column half">
     <h4>Frequency of songs played by title</h4>
-    <nvd3 options="analytics.options" data="analytics.data"></nvd3>
+    <nvd3 options="analytics.pieChartOptions" data="analytics.pieData"></nvd3>
+  </div>
+  <div class="chart column half">
+    <h4>Frequency of songs played by date</h4>
+    <nvd3 options="analytics.historicalBarChartOptions" data="analytics.historicalBarChartData"></nvd3>
   </div>
 </section>
